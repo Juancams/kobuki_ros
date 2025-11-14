@@ -20,7 +20,7 @@
       </link>
 
       <joint name="$(arg namespace)laser_joint" type="fixed">
-        <origin xyz="0.0 0.0 0.37" rpy="0 0 0" />
+        <origin xyz="0.0 0.0 0.37" rpy="3.1416 0 0" />
         <parent link="$(arg namespace)base_link"/>
         <child link="$(arg namespace)laser_link" />
     </joint>
