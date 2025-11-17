@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="sensor_lidar" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="sensor_lidar" params = "namespace">
+  <xacro:macro name="sensor_lidar" params = "namespace x:=0 y:=0 z:=0.37 roll:=0 pitch:=0 yaw:=0">
   
   <link name="$(arg namespace)laser_link">
       <visual>
@@ -20,7 +20,7 @@
       </link>
 
       <joint name="$(arg namespace)laser_joint" type="fixed">
-        <origin xyz="0.0 0.0 0.37" rpy="0 0 0" />
+        <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}" />
         <parent link="$(arg namespace)base_link"/>
         <child link="$(arg namespace)laser_link" />
     </joint>
