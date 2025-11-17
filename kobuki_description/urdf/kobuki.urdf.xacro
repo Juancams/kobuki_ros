@@ -7,6 +7,12 @@
 <robot name="kobuki" xmlns:xacro="http://ros.org/wiki/xacro" >
 
   <xacro:arg name="lidar" default="false" />
+  <xacro:arg name="lidar_position_x" default="0" />
+  <xacro:arg name="lidar_position_y" default="0" />
+  <xacro:arg name="lidar_position_z" default="0.37" />
+  <xacro:arg name="lidar_orientation_roll" default="0" />
+  <xacro:arg name="lidar_orientation_pitch" default="0" />
+  <xacro:arg name="lidar_orientation_yaw" default="0" />
   <xacro:arg name="camera" default="false" />
   <xacro:arg name="structure" default="false" />
   <!-- Namespace will be applied to all TF frames and topics.
@@ -49,7 +55,13 @@
 
   <xacro:if value="$(arg lidar)">
     <xacro:include filename="$(find kobuki_description)/urdf/sensors/lidar.urdf.xacro"/>
-    <xacro:sensor_lidar namespace="$(arg namespace)"/>
+    <xacro:sensor_lidar namespace="$(arg namespace)" 
+                        x="$(arg lidar_position_x)" 
+                        y="$(arg lidar_position_y)" 
+                        z="$(arg lidar_position_z)"
+                        roll="$(arg lidar_orientation_roll)" 
+                        pitch="$(arg lidar_orientation_pitch)" 
+                        yaw="$(arg lidar_orientation_yaw)"/>
   </xacro:if>
 
   <xacro:if value="$(arg camera)">

@@ -145,6 +145,30 @@ def generate_launch_description():
         'lidar', default_value='false',
         description='Enable lidar sensor')
 
+    lidar_position_x_arg = DeclareLaunchArgument(
+        'lidar_position_x', default_value='0',
+        description='Lidar X position relative to base_link')
+
+    lidar_position_y_arg = DeclareLaunchArgument(
+        'lidar_position_y', default_value='0',
+        description='Lidar Y position relative to base_link')
+
+    lidar_position_z_arg = DeclareLaunchArgument(
+        'lidar_position_z', default_value='0.37',
+        description='Lidar Z position relative to base_link')
+
+    lidar_orientation_roll_arg = DeclareLaunchArgument(
+        'lidar_orientation_roll', default_value='0',
+        description='Lidar roll orientation')
+
+    lidar_orientation_pitch_arg = DeclareLaunchArgument(
+        'lidar_orientation_pitch', default_value='0',
+        description='Lidar pitch orientation')
+
+    lidar_orientation_yaw_arg = DeclareLaunchArgument(
+        'lidar_orientation_yaw', default_value='0',
+        description='Lidar yaw orientation')
+
     camera_arg = DeclareLaunchArgument(
         'camera', default_value='false',
         description='Enable camera sensor')
@@ -198,6 +222,15 @@ def generate_launch_description():
                     Command([
                         'xacro ', LaunchConfiguration('description_file'),
                         ' lidar:=', LaunchConfiguration('lidar'),
+                        ' lidar_position_x:=', LaunchConfiguration('lidar_position_x'),
+                        ' lidar_position_y:=', LaunchConfiguration('lidar_position_y'),
+                        ' lidar_position_z:=', LaunchConfiguration('lidar_position_z'),
+                        ' lidar_orientation_roll:=',
+                        LaunchConfiguration('lidar_orientation_roll'),
+                        ' lidar_orientation_pitch:=',
+                        LaunchConfiguration('lidar_orientation_pitch'),
+                        ' lidar_orientation_yaw:=',
+                        LaunchConfiguration('lidar_orientation_yaw'),
                         ' camera:=', LaunchConfiguration('camera'),
                         ' structure:=', LaunchConfiguration('structure'),
                         ' gazebo:=', LaunchConfiguration('gazebo')
@@ -215,6 +248,15 @@ def generate_launch_description():
                     Command([
                         'xacro ', LaunchConfiguration('description_file'),
                         ' lidar:=', LaunchConfiguration('lidar'),
+                        ' lidar_position_x:=', LaunchConfiguration('lidar_position_x'),
+                        ' lidar_position_y:=', LaunchConfiguration('lidar_position_y'),
+                        ' lidar_position_z:=', LaunchConfiguration('lidar_position_z'),
+                        ' lidar_orientation_roll:=',
+                        LaunchConfiguration('lidar_orientation_roll'),
+                        ' lidar_orientation_pitch:=',
+                        LaunchConfiguration('lidar_orientation_pitch'),
+                        ' lidar_orientation_yaw:=',
+                        LaunchConfiguration('lidar_orientation_yaw'),
                         ' camera:=', LaunchConfiguration('camera'),
                         ' structure:=', LaunchConfiguration('structure'),
                         # Must append the trailing slash when a namespace is active
@@ -239,6 +281,12 @@ def generate_launch_description():
 
     ld = LaunchDescription()
     ld.add_action(lidar_arg)
+    ld.add_action(lidar_position_x_arg)
+    ld.add_action(lidar_position_y_arg)
+    ld.add_action(lidar_position_z_arg)
+    ld.add_action(lidar_orientation_roll_arg)
+    ld.add_action(lidar_orientation_pitch_arg)
+    ld.add_action(lidar_orientation_yaw_arg)
     ld.add_action(camera_arg)
     ld.add_action(structure_arg)
     ld.add_action(gazebo_arg)
