@@ -69,6 +69,7 @@
           <update_rate>30.0</update_rate>
           <visualize>true</visualize>
           <topic>$(arg namespace)rgbd_camera</topic>
+          <gz_frame_id>$(arg namespace)camera_rgb_optical_frame</gz_frame_id>
           <camera>
             <horizontal_fov>${63.0*M_PI/180.0}</horizontal_fov>
             <image>
@@ -87,7 +88,7 @@
               <p1>0.00000001</p1>
               <p2>0.00000001</p2>
             </distortion>
-            <optical_frame_id>$(arg namespace)camera_link</optical_frame_id>
+            <optical_frame_id>$(arg namespace)camera_rgb_optical_frame</optical_frame_id>
           </camera>
         </sensor>
       </gazebo>
