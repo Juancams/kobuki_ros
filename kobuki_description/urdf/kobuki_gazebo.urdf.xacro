@@ -62,7 +62,7 @@
       </gazebo>
     </xacro:if>
 
-<xacro:if value="$(arg camera)">
+    <xacro:if value="$(arg camera)">
       <gazebo reference="$(arg namespace)camera_rgb_frame">
         <sensor type="rgbd_camera" name="$(arg namespace)kobuki_frame_sensor">
           <always_on>1</always_on>
